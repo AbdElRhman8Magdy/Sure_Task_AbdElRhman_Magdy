@@ -51,7 +51,7 @@ public class BaseTest {
 
 //        Thread.sleep(2000);
 
-        getDriver().quit();
+//       getDriver().quit();
     }
     @Step
     public void injectCookiestoBrowser(List<Cookie> ResrAssuredCokkies){

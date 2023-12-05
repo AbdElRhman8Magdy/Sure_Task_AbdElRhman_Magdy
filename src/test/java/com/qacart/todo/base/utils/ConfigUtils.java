@@ -28,4 +28,16 @@ public class ConfigUtils {
         if(prop != null) return prop;
             throw new RuntimeException("couldnt find baseUrl in property file ");
     }
+
+    public  String ReturnEmail(){
+        String prop  = properties.getProperty("email");
+        if(prop != null) return prop;
+        throw new RuntimeException("couldnt find EEMail in property file ");
+    }
+
+    public  String ReturnPassword(){
+        String prop  = properties.getProperty("password");
+        if(prop != null) return prop;
+        throw new RuntimeException("couldnt find passworrrd in property file ");
+    }
 }

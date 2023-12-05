@@ -8,4 +8,9 @@ public class EndPoint {
 
     public final static String API_BaseURI_ENDPOINT = "https://todo.qacart.com";
 
+    public final static String API_BaseURI_ENDPOINT_Task = "https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/";
+
+    public final static String API_REGISTER_ENDPOINT_Task = "pim/employees";
+
+
 }

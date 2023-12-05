@@ -15,7 +15,7 @@ public class RegisterAPI {
     private List<Cookie> RestAssurCookeis;
     private String AccessToken;
     private String userID;
-    private String firstName;
+    private String employeeId;
 //    private String email;
 
     public List<Cookie> getCookeis() {
@@ -27,8 +27,8 @@ public class RegisterAPI {
     public String getUserID() {
         return this.userID;
     }
-    public String getFirstName() {
-        return this.firstName;
+    public String getEmployeeId() {
+        return this.employeeId;
     }
 
 
@@ -38,44 +38,41 @@ public class RegisterAPI {
 
 
     public void register() {
-    //String EmailRndm = RandomStringUtils.randomAlphanumeric(8);
-//        "abdelrhman8dmagdy"+EmailRndm+"@gmail.com"
+
 
     User RegisterBody =  UserUtils  .GenerateRndmUser();
 
-//            User(
-//            //Set user details at ->com.qacart.todo.objects.User
-//            "abdelrhman8dmagdy"+EmailRndm+"@gmail.com",
-//            "12345678",
-//            "Abd ElRhman","Magdy");
 
 
 
     Response response=
             given()
-                .baseUri(EndPoint.API_BaseURI_ENDPOINT)
-                .header("Content-Type","application/json")
+                .baseUri(EndPoint.API_BaseURI_ENDPOINT_Task)
+                    .cookie("orangehrm","00a508c5b3484681526ab73876a2bf4e")
+                .headers("Content-Type","application/json")
                 .body(RegisterBody)
                     .log().all()
             .when()
-                .post(EndPoint.API_REGISTER_ENDPOINT)
+                .post(EndPoint.API_REGISTER_ENDPOINT_Task)
             .then()
                 .log().all()
                 .extract().response()
                                     ;
 
-    if(response.statusCode() !=201){
+    if(response.statusCode() !=200){
         throw new   RuntimeException("Error with request ->response code package com.qacart.todo.API line 65"+ response.statusCode());
     }
 //    else if () {
 //
 //    }
 
-        RestAssurCookeis = response.detailedCookies().asList();
-        AccessToken = response.path("access_token");
-        userID = response.path("userID");
-        firstName = response.path("firstName");
-//        email = RegisterBody.getEmail();
+//        RestAssurCookeis = response.detailedCookies().asList();
+//        AccessToken = response.path(".data.empNumber");
+////        userID = response.path("userID");
+//        employeeId = response.path("data","empNumber");
+//////        email = RegisterBody.getEmail();
+//        System.out.println("asdasdasd"+AccessToken);
+//        System.out.println(employeeId);
 
 
     }

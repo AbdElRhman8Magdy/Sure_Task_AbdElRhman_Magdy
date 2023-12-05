@@ -11,15 +11,7 @@ public class RegisterPage extends BasePage {
     public RegisterPage(WebDriver driver) {
         super(driver);
     }
-    /**
-     *
-     * @param driver
-     */
-//    public RegisterPage Load(){
-//        //driver.get("https://todo.qacart.com/login");
-//            return this;
-    //instead of void use class name and return this to be able to call all methods on class at "test"
-//}
+
 
 
 
@@ -44,7 +36,7 @@ public class RegisterPage extends BasePage {
     //instead of run each test individually let's add last step to return to next test
     @Step
 
-   public NewPage Register (String frstname, String Lastname, String Email, String password, String ConPass){
+   public PIMPage Register (String frstname, String Lastname, String Email, String password, String ConPass){
         FrstName.sendKeys(frstname);
         LastName.sendKeys(Lastname);
         EmailField.sendKeys(Email);
@@ -52,7 +44,7 @@ public class RegisterPage extends BasePage {
         CnPss.sendKeys(ConPass);
         SubmitButton.click();
 
-        return new NewPage(driver);
+        return new PIMPage(driver);
     }
 
 
