@@ -58,8 +58,10 @@ public class SureTaskTest extends BaseTest {
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.Load().login("Admin","admin123");
 
-        ContactDetails contactDetails = new ContactDetails(getDriver());
-        contactDetails.Load();
+        PIMPage pimPage = new PIMPage(getDriver());
+        pimPage.
+                Search().
+                NavigateToJobPage();
 
         JobDetails jobDetails = new JobDetails(getDriver());
          jobDetails.EditJopDetails();

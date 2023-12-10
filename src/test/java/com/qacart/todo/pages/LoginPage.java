@@ -13,9 +13,15 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 
 public class LoginPage extends BasePage {
+    public String getAuth() {
+        return Auth;
+    }
+
+    String Auth;
 
     @Step("aaddded description mannually to Load loging page and login")
     public LoginPage Load(){
@@ -44,17 +50,38 @@ public class LoginPage extends BasePage {
 @Step
     public HomePage login (String email, String password) throws IOException {
     UserNameInput.sendKeys(email);
-        PasswordInput.sendKeys(password);
-        SubmitButton.click();
-
-//    String getCookeis;
+    PasswordInput.sendKeys(password);
+    SubmitButton.click();
+//
+//    String getCookies=null;
 //    driver.manage().getCookies();
+//    System.out.println("ZZZZZZZZZ"+getCookies);
 
 
 
 
-        return new HomePage(driver);
+
+    File file = new File("browser.data");
+    try {
+        file.delete();
+        file.createNewFile();
+        FileWriter fos = new FileWriter(file);
+        BufferedWriter bos = new BufferedWriter(fos);
+
+        for (org.openqa.selenium.Cookie ck : driver.manage().getCookies()) {
+            if (Objects.equals(ck.getName(), "orangehrm")){
+                Auth =   ck.getValue();
+            }
+        }
+
+        bos.flush();
+        bos.close();
+        fos.close();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+
     }
+    return new HomePage(driver,Auth);
 
+}}
 
-}

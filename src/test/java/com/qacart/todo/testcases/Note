@@ -28,3 +28,22 @@ otherwise you have to setup maven on OS environment variables
 scoop install allure
 
 allure serve allure-results // to print allure report
+
+------>browser console
+var obj = { name: "John", age: 30, city: "New York" };
+
+> JSON.stringify(obj.name)
+<. '"John"'
+
+var p = JSON.stringify(obj)
+< undefined
+> p
+< "{"name":"John","age":30,"city":"New York"}"
+> JSON.parse(p)
+< >{name: "John", age: 30, city: "New York"}
+> JSON. parse(p) ["'name"]
+< "John"
+> JSON.parse(p) ["age"]
+< 30
+
+->>>>>

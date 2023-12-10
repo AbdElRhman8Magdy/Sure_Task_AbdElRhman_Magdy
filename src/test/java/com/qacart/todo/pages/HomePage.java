@@ -6,9 +6,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage {
+    public String getAuthToken() {
+        return AuthToken;
+    }
 
-    public HomePage(WebDriver driver) {
+    private String AuthToken;
+
+    public HomePage(WebDriver driver, String AuthToken) {
+
+
         super(driver);
+        this.AuthToken = AuthToken;
     }
 
     @FindBy(xpath =  "//a[.='PIM']")
